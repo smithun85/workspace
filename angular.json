@@ -13,10 +13,26 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US", 
+        "locales": { 
+          "re": { 
+            "translation": "src/locale/messages.re.xlf"
+          },
+          "fr": { 
+            "translation": "src/locale/messages.fr.xlf"
+          },
+          "it": { 
+            "translation": "src/locale/messages.it.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "localize": true,
+            "i18nMissingTranslation": "error",
             "outputPath": "dist/auto-sense",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -31,13 +47,48 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/theme/custom.scss",
+              {
+                "input": "src/assets/theme/default.scss",
+                "bundleName": "default",
+                "inject": true
+              },
+              {
+                "input": "src/assets/theme/blue.scss",
+                "bundleName": "blue",
+                "inject": false
+              },
+              {
+                "input": "src/assets/theme/green.scss",
+                "bundleName": "green",
+                "inject": false
+              },
+              {
+                "input": "src/assets/theme/light-blue.scss",
+                "bundleName": "light-blue",
+                "inject": false
+              },
+              {
+                "input": "src/assets/theme/light-green.scss",
+                "bundleName": "light-green",
+                "inject": false
+              }
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           },
           "configurations": {
+            "re": {
+              "localize": ["re"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
+            "it": {
+              "localize": ["it"]
+            },
             "production": {
               "budgets": [
                 {
@@ -64,6 +115,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "re": {
+              "buildTarget": "autoSense:build:development,re" 
+            },
+            "it": {
+              "buildTarget": "autoSense:build:development,it" 
+            },
+            "fr": {
+              "buildTarget": "autoSense:build:development,fr" 
+            },
             "production": {
               "buildTarget": "autoSense:build:production"
             },

@@ -1,5 +1,9 @@
 {
-    "header":"default-Title",
-    "navigation":"https://iconflux.com",
-    "footer":"Default-footer"
+    "title": "Can't charged?",
+    "description":"In order to solve your issue, please select which of the following is cousing your problems.",
+    "prefix_app_url": "https://cnmc1.test-app.link/lu5P1PvEMGb",
+    "params": "?tenant_id=1&station_id=bb37dbf3-d358-43a1-963b-69844eb06619&evse_id=CH*CHA*E*110157&shortcode=ASYE&show_support_page=true",
+    "app_button_text": "autoSense App",
+    "charging_station_url": "https://www.autosense.ch/",
+    "charging_station_button_text": "Charging station"
 }
